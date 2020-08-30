@@ -59,9 +59,14 @@ app.post('/api/notes', (req, res) => {
 // HTML routes ---------------------------------------------------------
 
 // Creating route GET to return the notes.html file - front-end
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/notes.html'));
+});
 
 // Creating route GET to return the index.html file - front-end
-
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/index.html'));
+});
 
 // Starting the server by setting up the Listener ----------------------
 app.listen(PORT, () => {
