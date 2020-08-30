@@ -19,7 +19,16 @@ app.use(express.json());
 // Using a promise to read the JSON
 // Routing the db.json to store / read notes using fs module
 
+function getSavedNotes() {
+    return savedNotes = fs.readFile('./db/db.json', 'utf8');
+};
+
 // Creating route GET to read the db.json and return saved notes as JSON
+app.get('/api/notes', (req, res) => {
+    getSavedNotes().then((savedNotes) => {
+        res.send(JSON.parse(savedNotes))
+    }).catch((err) => res.status().json(err));
+});
 
 // Creating route POST to receive a new note and add it to the db.json
 // Giving each note a unique id when it's saved to the db.json
@@ -41,6 +50,8 @@ app.use(express.json());
 
 
 // Starting the server by setting up the Listener ----------------------
-
+app.listen(PORT, () => {
+    console.log(`App listening on PORT: ${PORT}`);
+});
 
 // End of program script
