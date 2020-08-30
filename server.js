@@ -1,13 +1,18 @@
 // Dependencies - npm packages needed ----------------------------------
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
 
-// Setting up Express configuration
-
-// Creating the "express" server
+// Setting up Express server configuration
+// Creating the "express" server for node
+const app = express();
 
 // Setting an initial PORT for the Listener
+const PORT = process.env.PORT || 8080;
 
 // Setting up the Express app to handle data parsing
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // API routes ----------------------------------------------------------
 
