@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
+const crypto = require('crypto');
+
 // Setting up Express server configuration
 // Creating the "express" server for node
 const app = express();
@@ -33,8 +35,20 @@ app.get('/api/notes', (req, res) => {
 // Creating route POST to receive a new note and add it to the db.json
 // Giving each note a unique id when it's saved to the db.json
 // Returning the new note to the client on the front-end
+app.post('/api/notes', (req, res) => {
+    let savedNotes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
+    let id = crypto.randomBytes().toString();
+    let createsNewNote = {
+        title: req.body.title,
+        text: req.body.text,
+        id: id,
+    };
+    savedNotes.push(createsNewNote);
 
-// Writing the notes to the db.json using fs module
+    // Writing the notes to the db.json using fs module
+});
+
+
 
 // Creating route DELETE to receive a query parameter with the note id
 // Reading saved notes from db.json, removing a note with the given id
