@@ -17,19 +17,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
 
+
 // API routes ----------------------------------------------------------
 
 // Using a promise to read the JSON
 // Routing the db.json to store / read notes using fs module
 
-function getSavedNotes() {
-    return savedNotes = fs.readFile('./db/db.json', 'utf8');
+function getaddedNotes() {
+    return addedNotes = fs.readFile('./db/db.json', 'utf8');
 };
 
 // Creating route GET to read the db.json and return saved notes as JSON
 app.get('/api/notes', (req, res) => {
-    getSavedNotes().then((savedNotes) => {
-        res.send(JSON.parse(savedNotes))
+    getaddedNotes().then((addedNotes) => {
+        res.send(JSON.parse(addedNotes))
     }).catch((err) => res.status(500).json(err));
 });
 
@@ -37,28 +38,38 @@ app.get('/api/notes', (req, res) => {
 // Giving each note a unique id when it's saved to the db.json
 // Returning the new note to the client on the front-end
 app.post('/api/notes', (req, res) => {
-    let savedNotes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
+    let addedNotes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
     let id = crypto.randomBytes().toString();
     let createsNewNote = {
         title: req.body.title,
         text: req.body.text,
         id: id,
     };
-    savedNotes.push(createsNewNote);
+    addedNotes.push(createsNewNote);
 
     // Writing the notes to the db.json using fs module
-    fs.writeFileSync('./db/db.json', JSON.stringify(savedNotes), (err) => {
+    fs.writeFileSync('./db/db.json', JSON.stringify(addedNotes), (err) => {
         if (err) throw err;
         console.log('error');
     });
-    console.log('A new note has been added');
-    return res.json(savedNotes);
+    console.log('You have added a new note.');
+    return res.json(addedNotes);
 });
 
 // Creating route DELETE to receive a query parameter with the note id
 // Reading saved notes from db.json, removing a note with the given id
-
-// Rewriting the notes to the db.json using fs module
+app.delete('/api/notes/:id', (req, res) => {
+    let addedNotes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
+    let filtersNoteId = addedNotes.filter(x => x.id !== req.params.id);
+    
+    // Rewriting the notes to the db.json using fs module
+    fs.writeFileSync('./db/db.json', JSON.stringify(filtersNoteId), (err) => {
+        if (err) throw err;
+        console.log('error');
+    });
+    console.log('You have deleted a note.');
+    return res.json(addedNotes);
+});
 
 
 // HTML routes ---------------------------------------------------------
