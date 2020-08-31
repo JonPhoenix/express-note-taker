@@ -89,5 +89,3 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`App listening on PORT: ${PORT}`);
 });
-
-// End of program script
