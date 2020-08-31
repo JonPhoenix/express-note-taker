@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 8080;
 // Setting up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(__dirname + '/public'));
 
 // API routes ----------------------------------------------------------
 
@@ -29,7 +30,7 @@ function getSavedNotes() {
 app.get('/api/notes', (req, res) => {
     getSavedNotes().then((savedNotes) => {
         res.send(JSON.parse(savedNotes))
-    }).catch((err) => res.status().json(err));
+    }).catch((err) => res.status(500).json(err));
 });
 
 // Creating route POST to receive a new note and add it to the db.json
