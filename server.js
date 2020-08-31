@@ -46,9 +46,13 @@ app.post('/api/notes', (req, res) => {
     savedNotes.push(createsNewNote);
 
     // Writing the notes to the db.json using fs module
+    fs.writeFileSync('./db/db.json', JSON.stringify(savedNotes), (err) => {
+        if (err) throw err;
+        console.log('error');
+    });
+    console.log('A new note has been added');
+    return res.json(savedNotes);
 });
-
-
 
 // Creating route DELETE to receive a query parameter with the note id
 // Reading saved notes from db.json, removing a note with the given id
