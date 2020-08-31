@@ -1,9 +1,9 @@
 // Dependencies - npm packages needed ----------------------------------
 const express = require('express');
+const crypto = require('crypto');
+const util = require('util');
 const path = require('path');
 const fs = require('fs');
-
-const crypto = require('crypto');
 
 // Setting up Express server configuration
 // Creating the "express" server for node
@@ -21,17 +21,18 @@ app.use(express.static(__dirname + '/public'));
 // API routes ----------------------------------------------------------
 
 // Using a promise to read the JSON
-// Routing the db.json to store / read notes using fs module
+let notesSaveRetrieve = util.promisify(fs.readFile);
 
+// Routing the db.json to store / read notes using fs module
 function getAddedNotes() {
-    return addedNotes = fs.readFile('./db/db.json', 'utf8');
+    return addedNotes = notesSaveRetrieve('./db/db.json', 'utf8');
 };
 
 // Creating route GET to read the db.json and return saved notes as JSON
 app.get('/api/notes', (req, res) => {
     getAddedNotes().then((addedNotes) => {
         res.send(JSON.parse(addedNotes))
-    }).catch((err) => res.status(500).json(err));
+    }).catch((err) => res.status(null).json(err));
 });
 
 // Creating route POST to receive a new note and add it to the db.json
@@ -39,7 +40,7 @@ app.get('/api/notes', (req, res) => {
 // Returning the new note to the client on the front-end
 app.post('/api/notes', (req, res) => {
     let addedNotes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
-    let id = crypto.randomBytes().toString();
+    let id = crypto.randomBytes(16).toString("hex");
     let createsNewNote = {
         title: req.body.title,
         text: req.body.text,
