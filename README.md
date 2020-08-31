@@ -1,82 +1,80 @@
-# express-note-taker
+![License Badge](https://img.shields.io/badge/License-MIT-0298c3)
+# Express Note Taker
 
-## Unit 11 Express Homework: Note Taker
+  ## Description
+  The **Express Note Taker** assists users to keep track of important information and tasks to be completed. The server renders every written note available when needed. This application can write, save and delete notes, its user interface is powered by **JavaScript**, **Express**, and **JSON** technologies at its **back-end**.
 
-## Description
+  The **Express Note Taker** has its server hosted on [**Heroku**](https://www.heroku.com/home), this cloud platform supports several programming languages, and powers this app to run on every web browser. Click on the following link to deploy the app:
 
-Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
+  [Express Note Taker](https://jpx-express-note-taker.herokuapp.com/)
 
-* The application frontend has already been created, it's your job to build the backend and connect the two.
+  Application preview:
 
-* The following HTML routes should be created:
+  ![]()
 
-  * GET `/notes` - Should return the `notes.html` file.
+  ## Table of Contents
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
 
-  * GET `*` - Should return the `index.html` file
+  ## Installation
+  A web browser previously installed is all the user needs to run the **Express Note Taker** ([**Chrome**](https://www.google.com/chrome/?brand=CHBD&gclid=Cj0KCQjwv7L6BRDxARIsAGj-34pI6kcGFGrZkxQgztLSwZZ7JzwQJFBfDBdgTHCurYEpg3QscMjHhYUaAkkjEALw_wcB&gclsrc=aw.ds), and [**Firefox**](https://www.mozilla.org/en-US/firefox/) are recommended).
 
-* The application should have a `db.json` file on the backend that will be used to store and retrieve notes using the `fs` module.
+  ## Usage
+  How this application can be used: Once the app is deployed on the browser, clicking on the Get Started button will give access the note page. The user will be able to:
 
-* The following API routes should be created:
+  * CREATE and SAVE notes.
 
-  * GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.
+  * VIEW previously saved notes.
 
-  * POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
+  * DELETE previously saved notes.
 
-  * DELETE `/api/notes/:id` - Should receive a query parameter containing the id of a note to delete. This means you'll need to find a way to give each note a unique `id` when it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
+  ![]()
 
-## User Story
+  ![]()
 
-AS A user, I want to be able to write and save notes
+  The **Express Note Taker** is an efficient solution to keep important notes organized and available.
 
-I WANT to be able to delete notes I've written before
+  ## License
+    MIT
 
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
+  ## Contributing
+    Jon Phoenix
 
-## Business Context
+  ## Tests
+  Use this command to run a test: **npm** **run** **test** in the Command-Line Interface.
+  The tests for the created classes must all pass.
 
-For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed.
+- - -
 
-## Acceptance Criteria
-
-Application should allow users to create and save notes.
-
-Application should allow users to view previously saved notes.
-
-Application should allow users to delete previously saved notes.
-
-## Deploying the App
-
-You will not be able to deploy your server side code on GitHub pages. This app should be deployed on Heroku. Carefully follow the [Heroku Guide](../04-Supplemental/HerokuGuide.md) for getting your app deployed on Heroku.
+  ## Questions
+  
+ ![GitHub Badge](https://img.shields.io/badge/Github-JonPhoenix-0298c3)
+  
+ ![Profile Pic](https://github.com/JonPhoenix.png?size=120)
+  
+ Application repository: https://github.com/JonPhoenix/team-creator-app
+  
+ For further questions, please contact the author at: jonphx@uw.edu
 
 - - -
 
-## Commit Early and Often
+  ## References
+  ```
+  • express.js
+  • w3schools.com
+  • developer.mozilla.org
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
+  • nodejs.org
+  • npmjs.com
 
-* Your commit history is a signal to employers that you are actively working on projects and learning new skills.
+  • freecodecamp.org
+  • geeksforgeeks.org
 
-* Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
+  • screencastify.com
 
-Follow these guidelines for committing:
-
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
-
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
-
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
-
-* Test your application before you commit to ensure functionality at every step in the development process.
-
-We would like you to have well over 200 commits by graduation, so commit early and often!
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL of the deployed application. This should be the link to the url provided by Heroku. Be sure not to submit a link to the Heroku dashboard.
-
-* The URL of the GitHub repository
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+  ```
+  - - -
