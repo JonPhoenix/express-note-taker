@@ -23,13 +23,13 @@ app.use(express.static(__dirname + '/public'));
 // Using a promise to read the JSON
 // Routing the db.json to store / read notes using fs module
 
-function getaddedNotes() {
+function getAddedNotes() {
     return addedNotes = fs.readFile('./db/db.json', 'utf8');
 };
 
 // Creating route GET to read the db.json and return saved notes as JSON
 app.get('/api/notes', (req, res) => {
-    getaddedNotes().then((addedNotes) => {
+    getAddedNotes().then((addedNotes) => {
         res.send(JSON.parse(addedNotes))
     }).catch((err) => res.status(500).json(err));
 });
