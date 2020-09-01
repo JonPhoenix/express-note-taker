@@ -10,7 +10,7 @@
 
   Application preview:
 
-  ![]()
+  ![express-note-taker-1](images/express-note-taker-1.png)
 
   ## Table of Contents
   - [Installation](#installation)
@@ -32,9 +32,9 @@
 
   * DELETE previously saved notes.
 
-  ![]()
+  ![express-note-taker-2](images/express-note-taker-2.png)
 
-  ![]()
+  ![express-note-taker-3](images/express-note-taker-3.png)
 
   The **Express Note Taker** is an efficient solution to keep important notes organized and available.
 
